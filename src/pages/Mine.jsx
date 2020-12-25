@@ -2,10 +2,13 @@ import React from 'react';
 import MineDemo from './MineDemo';
 
 export default class Mine extends React.Component {
-    render() {
+    render () {
         return (
             <div>
-                <h2>我的</h2>
+                <div className="page-header">
+                    <h1>我的 <small>Subtext for header</small></h1>
+                </div>
+                <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
                 <MineDemo></MineDemo>
             </div>
         )

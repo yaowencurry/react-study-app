@@ -10,7 +10,7 @@ class MineDemo extends React.Component {
 
     render() {
         return (
-            <button onClick={this.handleLogin}>登录</button>
+            <button type="button" className="btn btn-primary" onClick={this.handleLogin}>登录</button>
         )
     }
 }
