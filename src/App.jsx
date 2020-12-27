@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import { increment, decrement } from './store/actions/counter';
 import * as counterActions from './store/actions/counter';
 // import User from './pages/User';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
@@ -67,12 +66,7 @@ const mapStateToProps = (state) => {
         user: state.user
     }
 }
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         increment: () => (dispatch(increment())),
-//         decrement: () => (dispatch(decrement())),
-//     }
-// }
+
 const mapDispatchToProps = (dispatch) => {
     return {
         counterActions: bindActionCreators(counterActions, dispatch)
