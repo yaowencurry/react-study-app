@@ -14,18 +14,33 @@ class User extends React.Component {
       username: ''
     })
   }
-  render () {
+  render() {
+    let data
+    console.log('props',this.props)
+    const { username, isFetchRequest, isError } = this.props.user;
+
+    if (isFetchRequest) {
+      data = 'Loading...'
+    } else if (isError) {
+      data = '出错啦...'
+    } else {
+      data = username;
+    }
+    console.log(data)
     return (
       <div className="page-header text-center">
+        <h1 className="text-center">{this.props.counter}</h1>
         <input type="text" value={this.state.username} onChange={(e) => this.setState({ username: e.target.value })} />
         <button type="button" className="btn btn-primary" onClick={this.handlAddUser}>添加用户</button>
-        <ul>
+        {/* <ul>
           {
             this.props.user.map((item, index) => {
               return <li key={index}>{item}</li>
             })
           }
-        </ul>
+        </ul> */}
+        <h2>{data}</h2>
+        <button type="button" className="btn btn-primary" onClick={this.props.userActions.getUser}>getUser</button>
       </div>
     )
   }
@@ -33,7 +48,8 @@ class User extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    counter: state.counter
   }
 }
 const mapDispatchToProps = (dispatch) => {
