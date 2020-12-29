@@ -2,26 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as counterActions from './store/actions/counter';
-// import User from './pages/User';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import Nav from './pages/Nav';
-import Mine from "./pages/Mine";
-import UserCenter from './pages/UserCenter';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
-import Shop from './pages/Shop';
-
-import Book from "./pages/Book";
-import WebBook from './pages/WebBook';
-import JavaBook from './pages/JavaBook';
+import TopNav from "./components/TopNav/TopNav";
+import { HashRouter as Router, Switch } from 'react-router-dom';
+// import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 
 class App extends React.Component {
-    render() {
+    render () {
         // const { increment, decrement } = this.props;
         return (
-            <div className="container text-center">
+            <div>
+                <Router>
+                    <Switch>
+
+                        <TopNav></TopNav>
+                    </Switch>
+                </Router>
                 {/* <User />
                 <div className="page-header text-center">
                     <h1>{this.props.counter}</h1>
@@ -39,7 +36,7 @@ class App extends React.Component {
                         })
                     }
                 </ul> */}
-                <Router>
+                {/* <Router>
                     <Nav></Nav>
                     <Switch>
                         <Route exact path="/" component={Mine}></Route>
@@ -55,7 +52,7 @@ class App extends React.Component {
                         </Book>
                         <Route component={NotFound}></Route>
                     </Switch>
-                </Router>
+                </Router> */}
             </div>
         )
     }

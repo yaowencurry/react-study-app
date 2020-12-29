@@ -13,6 +13,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -40,7 +41,9 @@
     ]
   },
   "devDependencies": {
+    "node-sass": "^5.0.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sass-loader": "^10.1.0"
   }
 }
