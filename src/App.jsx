@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as counterActions from './store/actions/counter';
 import TopNav from "./components/TopNav/TopNav";
-import { HashRouter as Router, Switch } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import * as userActions from './actions/moule/user';
+import Home from './pages/home/Home';
+import NotFound from './pages/NotFound';
+import PlayMusic from './components/PlayMusic/PlayMusic';
 // import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 
@@ -11,14 +14,18 @@ import { HashRouter as Router, Switch } from 'react-router-dom';
 class App extends React.Component {
     render () {
         // const { increment, decrement } = this.props;
-        return (
-            <div>
-                <Router>
-                    <Switch>
 
-                        <TopNav></TopNav>
+        return (
+            <div className="app" id="app">
+                <Router>
+                    <TopNav></TopNav>
+                    <Switch>
+                        <Route exact path="/" component={Home}></Route>
+                        <Route path="/discover" component={Home}></Route>
+                        <Route component={NotFound}></Route>
                     </Switch>
                 </Router>
+                <PlayMusic />
                 {/* <User />
                 <div className="page-header text-center">
                     <h1>{this.props.counter}</h1>
@@ -53,20 +60,19 @@ class App extends React.Component {
                         <Route component={NotFound}></Route>
                     </Switch>
                 </Router> */}
-            </div>
+            </div >
         )
     }
 }
 const mapStateToProps = (state) => {
     return {
-        counter: state.counter,
         user: state.user
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        counterActions: bindActionCreators(counterActions, dispatch)
+        userActions: bindActionCreators(userActions, dispatch),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)
