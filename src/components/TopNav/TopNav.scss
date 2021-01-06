@@ -72,12 +72,12 @@
       height: 100%;
       box-sizing: border-box;
       font-size: 12px;
-      /deep/ .ant-input-affix-wrapper {
-        border-radius: 32px;
-        width: 158px;
-        height: 32px;
-        font-size: 12px;
-        line-height: 32px;
+      &--input {
+        border-radius: 32px !important;
+        width: 158px !important;
+        height: 32px !important;
+        font-size: 12px !important;
+        line-height: 32px !important;
       }
       /deep/ .ant-input {
         font-size: 12px;

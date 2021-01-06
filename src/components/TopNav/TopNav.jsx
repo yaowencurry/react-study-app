@@ -5,13 +5,15 @@ import { SearchOutlined } from '@ant-design/icons';
 import Login from '../../pages/Login'
 import "./TopNav.scss";
 import Dialog from "../../packages/dialog/Dialog";
+import LoginMenu from "./LoginMenu";
 
 import { connect } from 'react-redux'
 
 class MenuRight extends React.Component {
 
     state = {
-        isShowLoginDialog: false
+        isShowLoginDialog: false,
+        isShowLoginMenu: false
     }
 
     handleLogin = () => {
@@ -26,7 +28,9 @@ class MenuRight extends React.Component {
         })
     }
 
-    render () {
+
+
+    render() {
         const { userInfo } = this.props;
         return (
             <div className="nav__container__handle flex flex-end">
@@ -37,13 +41,24 @@ class MenuRight extends React.Component {
                 <div className="nav__container__handle--create">创作中心</div>
                 {
                     userInfo.isLogin
-                        ? <img src={userInfo.profile.avatarUrl} alt="头像" className="nav__container__handle--avatar" />
+                        ? <div 
+                            onMouseEnter={() => this.setState({ isShowLoginMenu: true })}
+                            onMouseLeave={() => this.setState({ isShowLoginMenu: false })} 
+                          >
+                            <img
+                                alt="头像"
+                                className="nav__container__handle--avatar"
+                                src={userInfo.profile.avatarUrl}
+                            />
+                            {
+                                this.state.isShowLoginMenu ? (<LoginMenu />) : false
+                            }
+                        </div>
                         : <span className="nav__container__handle--login" onClick={this.handleLogin}>登录</span>
-
                 }
                 {
                     this.state.isShowLoginDialog
-                        ? (<Dialog component={Login} title="登录" close={this.handleClose}/>)
+                        ? (<Dialog component={Login} title="登录" close={this.handleClose} />)
                         : false
                 }
             </div>
@@ -53,7 +68,7 @@ class MenuRight extends React.Component {
 
 const menuList = [
     {
-        path: '/discover',
+        path: '/discover/demo1',
         name: '发现音乐'
     },
     {
@@ -80,7 +95,7 @@ const menuList = [
 
 class TopNav extends React.Component {
 
-    render () {
+    render() {
         return (
             <div>
                 <div className="nav">
