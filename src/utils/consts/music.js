@@ -1,0 +1,3 @@
+export const SAVE_MUSIC_LIST = 'SAVE_MUSIC_LIST';
+
+export const PLAY_MUSIC_STATE = 'PLAY_MUSIC_STATE'
