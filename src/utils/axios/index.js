@@ -10,10 +10,10 @@ export function getRequest (url, data) {
             method: 'get',
             params: data
         }).then(res => {
-            if (res.data.code === 200) {
+            if (res.status === 200) {
                 resolve(res.data || 'ok')
             } else {
-                return res.data || 'ok'
+                resolve(res.data || 'ok')
             }
         })
             .catch(err => {
@@ -27,10 +27,10 @@ export function postRequest (url, params) {
     return new Promise((resolve, reject) => {
         axios.post(BASE_URL + url + '?timestamp=' + new Date().getTime(), params,)
             .then(res => {
-                if (res.data.code === 200) {
-                    resolve(res)
+                if (res.status === 200) {
+                    resolve(res.data || 'ok')
                 } else {
-                    resolve(res)
+                    resolve(res.data || 'ok')
                 }
             })
             .catch(err => {

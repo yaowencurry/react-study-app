@@ -46,9 +46,9 @@ class Login extends React.Component {
     onFinish = (values) => {
         LoginSubmit(values).then(res => {
             if (res) {
-                sessionStorage.setItem('userInfo', JSON.stringify(res));
+                sessionStorage.setItem('userInfo', JSON.stringify(res.data));
                 this.props.userActions.saveLoginState(true)
-                this.props.userActions.saveUserInfo(res)
+                this.props.userActions.saveUserInfo(res.data)
                 this.props.close();
             }
         })

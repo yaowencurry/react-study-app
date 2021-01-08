@@ -7,6 +7,8 @@ import * as userActions from './actions/moule/user';
 import Home from './pages/home/Home';
 import NotFound from './pages/NotFound';
 import PlayMusic from './components/PlayMusic/PlayMusic';
+import Recommend from './pages/home/recommend/Recommend';
+import SongListDetail from './pages/home/recommend/component/SongListDetail';
 
 
 
@@ -17,8 +19,17 @@ class App extends React.Component {
                 <Router>
                     <TopNav></TopNav>
                     <Switch>
-                        <Route exact path="/" component={Home}></Route>
-                        <Route path="/discover" component={Home}></Route>
+                        <Route exact path="/mine" render={() => <div>mine页面</div>}></Route>
+                        <Route exact path="/friend" render={() => <div>friend页面</div>}></Route>
+                        <Home>
+                            <Switch>
+                                <Route exact path="/discover/recommend" component={Recommend}>
+                                </Route>
+                                <Route exact path="/discover/listdetail/:id" component={SongListDetail}></Route>
+                                <Route exact path="/discover/demo2" render={() => <div>demo2</div>}></Route>
+                                <Route component={NotFound}></Route>
+                            </Switch>
+                        </Home>
                         <Route component={NotFound}></Route>
                     </Switch>
                 </Router>

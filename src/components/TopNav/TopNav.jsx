@@ -68,7 +68,7 @@ class MenuRight extends React.Component {
 
 const menuList = [
     {
-        path: '/discover/demo1',
+        path: '/discover',
         name: '发现音乐'
     },
     {

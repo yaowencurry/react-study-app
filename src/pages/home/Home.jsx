@@ -1,16 +1,18 @@
 import React from 'react';
 import DiscoverSubNav from "../../components/TopNav/sub/DiscoverSubNav";
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import * as counterActions from "../../actions/moule/counter";
+import * as musicActions from '../../actions/moule/music'
 import { bindActionCreators } from 'redux';
 import MUSICAPI from '../../api/music';
+import Recommend from './recommend/Recommend';
 
 import { RefreshLogin } from "../../api/common";
 
 const Demo1 = () => {
   return (
-    <div>1231</div>
+    <div>123123123123</div>
   )
 }
 
@@ -22,27 +24,34 @@ class Home extends React.Component {
     if (this.props.user.isLogin) {
       MUSICAPI.getUserPlayList({ uid: this.props.user.profile.userId })
         .then(res => {
-          res && console.log(res);
         })
       MUSICAPI.getDayRecommendList()
         .then(res => {
-          res && console.log(res);
         })
     }
+    MUSICAPI.getMusicUrl({ id: '176053' }).then(res => {
+      res && this.props.musicActions.saveMusicList(res)
+    })
   }
 
   componentDidMount () {
     this.getUserPlayList();
+    console.log(this.props);
   }
 
   render () {
-    console.log(this.props);
     return (
       <div>
         <Router>
-          <DiscoverSubNav></DiscoverSubNav>
+          <DiscoverSubNav />
+          {
+            this.props.children
+          }
           <Switch>
-            <Route path="/discover/demo1" component={Demo1}></Route>
+            {/* <Route path="/discover/" component={Recommend}></Route>
+            <Route exact path="/discover/recommend" component={Recommend}></Route>
+            <Route exact path="/discover/demo2" component={Demo1}></Route>
+            <Redirect from="/*" to="/discover/recommend" /> */}
           </Switch>
         </Router>
       </div>
@@ -52,13 +61,15 @@ class Home extends React.Component {
 const mapStateToProps = (state) => {
   return {
     counter: state.counter,
-    user: state.user
+    user: state.user,
+    music: state.music
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    counterActions: bindActionCreators(counterActions, dispatch)
+    counterActions: bindActionCreators(counterActions, dispatch),
+    musicActions: bindActionCreators(musicActions, dispatch)
   }
 }
 

@@ -4,7 +4,7 @@ import './subNav.scss';
 
 const subHomeMenu = [
   {
-    path: '/discover/demo1',
+    path: '/discover/recommend',
     name: '推荐'
   },
   {
@@ -31,6 +31,7 @@ const subHomeMenu = [
 
 export default class DiscoverSubNav extends React.Component {
   render () {
+    console.log(this.props);
     return (
       <div className="sub-nav">
         <div className="discover-nav">

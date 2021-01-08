@@ -28,7 +28,7 @@ export function login (data) {
     LoginSubmit(data)
       .then((res) => {
         if (res) {
-          sessionStorage.setItem('userInfo', JSON.stringify(res))
+          sessionStorage.setItem('userInfo', JSON.stringify(res.data))
           dispatch(saveLoginState(true))
           dispatch(saveUserInfo(res))
         }
