@@ -1,20 +1,14 @@
 import React from 'react';
 import DiscoverSubNav from "../../components/TopNav/sub/DiscoverSubNav";
-import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import * as counterActions from "../../actions/moule/counter";
 import * as musicActions from '../../actions/moule/music'
 import { bindActionCreators } from 'redux';
 import MUSICAPI from '../../api/music';
-import Recommend from './recommend/Recommend';
 
 import { RefreshLogin } from "../../api/common";
 
-const Demo1 = () => {
-  return (
-    <div>123123123123</div>
-  )
-}
 
 
 class Home extends React.Component {
