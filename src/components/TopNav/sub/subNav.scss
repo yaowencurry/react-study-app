@@ -1,0 +1,26 @@
+.sub-nav {
+  background-color: #c40d13;
+}
+.discover-nav {
+  width: 74%;
+  height: 40px;
+  min-width: 1000px;
+  max-width: $maxWidth;
+  margin: 0 auto;
+  padding-left: 195px;
+  &__item {
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 15px;
+    border-radius: 15px;
+    line-height: 40px;
+    margin-right: 20px;
+  }
+  &__item.active {
+    background-color: #9d0b0d;
+  }
+  &__item:hover {
+    color: #fff;
+    background-color: #9d0b0d;
+  }
+}

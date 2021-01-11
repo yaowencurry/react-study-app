@@ -1,0 +1,3 @@
+export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
+export const SAVE_LOGIN_STATE = 'SAVELOGINSTATE';
+export const GET_USER_INFO = 'GET_USER_INFO';

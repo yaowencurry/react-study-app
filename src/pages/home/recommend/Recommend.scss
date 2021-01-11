@@ -1,0 +1,37 @@
+.recommend {
+  width: $contentWidth;
+  margin: 0 auto;
+  border: 1px solid #d3d3d3;
+  box-sizing: border-box;
+  align-items: flex-start !important;
+  &__left {
+    width: $contentLeft;
+    padding: 20px;
+    border-right: 1px solid #d3d3d3;
+  }
+  &__right {
+    width: $contentRight;
+    padding: 20px;
+  }
+}
+.musicCardBox {
+  flex-wrap: wrap;
+}
+.musicCard {
+  width: 23%;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  cursor: pointer;
+  img {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #d3d3d3;
+  }
+  p {
+    font-size: 12px;
+    color: #333;
+  }
+}

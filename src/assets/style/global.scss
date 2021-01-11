@@ -1,0 +1,60 @@
+$mainRed: #c40d13;
+$mainBlack: #242424;
+$mainWidth: 70%;
+$maxWidth: 1100px;
+$contentWidth: 982px;
+$contentLeft: 730px;
+$contentRight: 252px;
+
+.base {
+    width: $contentWidth;
+    margin: 0 auto;
+    border: 1px solid #d3d3d3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    &__left {
+        width: $contentLeft;
+        padding: 20px;
+        border-right: 1px solid #d3d3d3;
+    }
+    &__right {
+        width: $contentRight;
+        padding: 20px;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#dialog {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+li {
+    list-style: none;
+}
+li,
+a {
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-start {
+    justify-content: flex-start;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}

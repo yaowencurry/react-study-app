@@ -1,38 +1,52 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import Nav from './pages/Nav';
-import Mine from "./pages/Mine";
-import UserCenter from './pages/UserCenter';
-import Login from './pages/Login';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import TopNav from "./components/TopNav/TopNav";
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import * as userActions from './actions/moule/user';
+import Home from './pages/home/Home';
 import NotFound from './pages/NotFound';
-import Shop from './pages/Shop';
+import PlayMusic from './components/PlayMusic/PlayMusic';
+import Recommend from './pages/home/recommend/Recommend';
+import SongListDetail from './pages/home/recommend/component/SongListDetail';
 
-import Book from "./pages/Book";
-import WebBook from './pages/WebBook';
-import JavaBook from './pages/JavaBook';
 
-export default class App extends React.Component {
-    render() {
+
+class App extends React.Component {
+    render () {
         return (
-            <div>
+            <div className="app" id="app">
                 <Router>
-                    <Nav></Nav>
+                    <TopNav></TopNav>
                     <Switch>
-                        <Route exact path="/" component={Mine}></Route>
-                        <Route exact strict path="/mine" component={Mine}></Route>
-                        <Route exact strict path="/login" component={Login}></Route>
-                        <Route exact strict path="/usercenter" component={UserCenter}></Route>
-                        <Route exact strict path="/shop" component={Shop}></Route>
-                        <Book >
+                        <Route exact path="/mine" render={() => <div>mine页面</div>}></Route>
+                        <Route exact path="/friend" render={() => <div>friend页面</div>}></Route>
+                        <Home>
                             <Switch>
-                                <Route path="/book/javabook" component={JavaBook}></Route>
-                                <Route path="/book/webbook" component={WebBook}></Route>
+                                <Route exact path="/discover/recommend" component={Recommend}>
+                                </Route>
+                                <Route exact path="/discover/listdetail/:id" component={SongListDetail}></Route>
+                                <Route exact path="/discover/demo2" render={() => <div>demo2</div>}></Route>
+                                <Route component={NotFound}></Route>
                             </Switch>
-                        </Book>
+                        </Home>
                         <Route component={NotFound}></Route>
                     </Switch>
                 </Router>
-            </div>
+                <PlayMusic />
+            </div >
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        userActions: bindActionCreators(userActions, dispatch),
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App)

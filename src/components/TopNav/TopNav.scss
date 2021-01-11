@@ -1,0 +1,124 @@
+.nav {
+  background-color: $mainBlack;
+  height: 70px;
+  box-sizing: border-box;
+  &__container {
+    width: 74%;
+    height: 100%;
+    max-width: $maxWidth;
+    min-width: 1000px;
+    margin: 0 auto;
+    &__box {
+      width: 70%;
+      height: 100%;
+    }
+    &__logo {
+      width: 176px;
+      height: 69px;
+      background-image: url("../../assets//images/topbar.png");
+    }
+    &__content {
+      height: 100%;
+      box-sizing: border-box;
+      margin: 0;
+      
+      &--item {
+        // width: 100px;
+        position: relative;
+        height: 100%;
+        text-align: center;
+        font-size: 14px;
+        padding: 0 19px;
+        line-height: 70px;
+        color: #ccc;
+        
+        .sub {
+          position: absolute;
+          top: 12px;
+          right: -26px;
+          height: 15px;
+          width: 35px;
+          background-color: $mainRed;
+          font-size: 8px;
+          text-align: center;
+          line-height: 15px;
+          color: #fff;
+          border-radius: 20px;
+        }
+      }
+      &--item.active {
+        color: #fff;
+        background-color: #000000;
+      }
+      &--item:hover {
+        background-color: #000000;
+        cursor: pointer;
+        color: #fff;
+      }
+      &--item.active::after {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border: 8px solid;
+        border-color: transparent transparent $mainRed transparent;
+      }
+    }
+    &__handle {
+      height: 100%;
+      box-sizing: border-box;
+      font-size: 12px;
+      &--input {
+        border-radius: 32px !important;
+        width: 158px !important;
+        height: 32px !important;
+        font-size: 12px !important;
+        line-height: 32px !important;
+      }
+      /deep/ .ant-input {
+        font-size: 12px;
+      }
+      /deep/ .ant-input-prefix {
+        font-size: 14px;
+        color: #999;
+      }
+      /deep/ .ant-input-affix-wrapper:active,
+      /deep/ .ant-input-affix-wrapper:focus {
+        border: none;
+      }
+
+      &--create {
+        width: 90px;
+        height: 32px;
+        margin: 0 12px;
+        box-sizing: border-box;
+        text-align: center;
+        border: 1px solid #4f4f4f;
+        line-height: 32px;
+        color: #ccc;
+        border-radius: 20px;
+      }
+      &--create:hover {
+        cursor: pointer;
+        color: #fff;
+        border-color: #fff;
+      }
+      &--login {
+        color: #787878;
+      }
+      &--avatar {
+        width: 30px;
+        border-radius: 50%;
+      }
+      &--login:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: #999;
+      }
+    }
+  }
+}

@@ -3,8 +3,9 @@
 # dependencies
 /node_modules
 /.pnp
+.eslintcache
 .pnp.js
-
+yarn.lock
 # testing
 /coverage
 
